@@ -1,6 +1,6 @@
 <div align="center">
 
-<img src="./assets/banner.svg" width="100%" alt="RainFoam · 月夜、远山与流星" />
+<img src="./assets/banner.svg?v=cinema-3" width="100%" alt="RainFoam · 月夜、远山与流星" />
 
 <br />
 
