@@ -5,7 +5,7 @@
 <br />
 <img src="https://github.com/RainFoam0693.png" width="112" alt="RainFoam 的头像" />
 
-### 你好呀，这里是雨沫 ฅ՞•ﻌ•՞ฅ
+### 你好呀，这里是 RainFoam ฅ՞•ﻌ•՞ฅ
 
 **写一点代码，收集一点快乐。**
 
