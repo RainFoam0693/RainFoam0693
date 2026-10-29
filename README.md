@@ -29,8 +29,34 @@
 
 <br />
 
+<sub>02 &nbsp; / &nbsp; GITHUB IN NUMBERS</sub>
+
+<br /><br />
+
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="./assets/stats-night.svg" />
+  <img src="./assets/stats-day.svg" width="55%" align="top" alt="RainFoam 的 GitHub 公开数据统计" />
+</picture>
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="./assets/languages-night.svg" />
+  <img src="./assets/languages-day.svg" width="43%" align="top" alt="RainFoam 公开原创仓库的常用语言" />
+</picture>
+
+<br /><br />
+
+<sub>03 &nbsp; / &nbsp; A LITTLE SNAKE, A YEAR OF CODE</sub>
+
+<br /><br />
+
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="./assets/snake-night.svg" />
+  <img src="./assets/snake-day.svg" width="100%" alt="贪吃蛇逐格吃掉 RainFoam 的 GitHub 贡献图" />
+</picture>
+
+<br />
+
 <details>
-<summary>02 &nbsp; / &nbsp; 留给路过的你 🐾</summary>
+<summary>04 &nbsp; / &nbsp; 留给路过的你 🐾</summary>
 <br />
 <div align="center">
 
