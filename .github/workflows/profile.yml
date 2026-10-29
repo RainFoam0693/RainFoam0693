@@ -1,0 +1,75 @@
+name: Refresh profile cards and snake
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: '17 3 * * *'
+  push:
+    branches: [main]
+    paths: ['.github/workflows/profile.yml']
+
+permissions:
+  contents: read
+
+concurrency:
+  group: profile-artwork
+  cancel-in-progress: false
+
+jobs:
+  generate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803 # v6
+      - name: Generate light stats
+        uses: stats-organization/github-readme-stats-action@96a939a7398a290e0a9f84b2b31d21d0cf67d483 # v2
+        with:
+          card: stats
+          options: username=RainFoam0693&show_icons=true&bg_color=F5F7FC&title_color=42526B&text_color=667D99&icon_color=9B86AC&border_color=DFE5EF&border_radius=12
+          path: assets/stats-day.svg
+          token: ${{ secrets.GITHUB_TOKEN }}
+          fail_on_error: true
+      - name: Generate dark stats
+        uses: stats-organization/github-readme-stats-action@96a939a7398a290e0a9f84b2b31d21d0cf67d483 # v2
+        with:
+          card: stats
+          options: username=RainFoam0693&show_icons=true&bg_color=111C31&title_color=E1E7F5&text_color=9AABC5&icon_color=B9B2DF&border_color=263650&border_radius=12
+          path: assets/stats-night.svg
+          token: ${{ secrets.GITHUB_TOKEN }}
+          fail_on_error: true
+      - name: Generate light languages
+        uses: stats-organization/github-readme-stats-action@96a939a7398a290e0a9f84b2b31d21d0cf67d483 # v2
+        with:
+          card: top-langs
+          options: username=RainFoam0693&layout=compact&langs_count=6&card_width=340&bg_color=F5F7FC&title_color=42526B&text_color=667D99&border_color=DFE5EF&border_radius=12
+          path: assets/languages-day.svg
+          token: ${{ secrets.GITHUB_TOKEN }}
+          fail_on_error: true
+      - name: Generate dark languages
+        uses: stats-organization/github-readme-stats-action@96a939a7398a290e0a9f84b2b31d21d0cf67d483 # v2
+        with:
+          card: top-langs
+          options: username=RainFoam0693&layout=compact&langs_count=6&card_width=340&bg_color=111C31&title_color=E1E7F5&text_color=9AABC5&border_color=263650&border_radius=12
+          path: assets/languages-night.svg
+          token: ${{ secrets.GITHUB_TOKEN }}
+          fail_on_error: true
+      - name: Generate contribution snakes
+        uses: Platane/snk/svg-only@d8f6715049803e982ee5ff501b6b9b7d5deeb09b # v3
+        with:
+          github_user_name: RainFoam0693
+          outputs: |
+            assets/snake-day.svg?color_snake=#9b86ac&color_dots=#edf1f7,#cddcec,#a9bfdb,#879fc6,#687ea9
+            assets/snake-night.svg?palette=github-dark&color_snake=#c3b6d7&color_dots=#19263b,#354866,#627ba1,#96accf,#c8d7ef
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      - name: Publish generated artwork
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add assets/stats-*.svg assets/languages-*.svg assets/snake-*.svg
+          if git diff --cached --quiet; then exit 0; fi
+          git commit -m 'chore: refresh profile cards and contribution snake'
+          git pull --rebase origin main
+          git push origin HEAD:main
