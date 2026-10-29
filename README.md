@@ -1,6 +1,10 @@
 <div align="center">
 
-<img src="./assets/banner.svg?v=cinema-3" width="100%" alt="RainFoam · 月夜、远山与流星" />
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="./assets/banner.svg?v=garden-1" />
+  <source media="(prefers-color-scheme: light)" srcset="./assets/banner-day.svg" />
+  <img src="./assets/banner-day.svg" width="100%" alt="RainFoam · 晨光与月夜之间，远山、薄云和猫猫" />
+</picture>
 
 <br />
 
@@ -43,7 +47,11 @@
 
 <br />
 
----
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="./assets/garden-night.svg" />
+  <source media="(prefers-color-scheme: light)" srcset="./assets/garden-day.svg" />
+  <img src="./assets/garden-day.svg" width="100%" alt="RainFoam 的小花园：蓝紫花朵缓缓绽放，蝴蝶与萤火虫陪伴猫猫" />
+</picture>
 
 <div align="center">
 
